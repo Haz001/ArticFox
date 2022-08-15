@@ -1,22 +1,17 @@
 from flask import Flask
 from flask import request
+from flask import render_template
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-	return "Hello world"
+	return render_template('home.html')
 
 
-@app.route('/s/',methods=['POST','get'])
+@app.route('/s/',methods=['get'])
 def search():
 	message = ""
-	try:
-		response = {}
-		response["method"] = str(request.method)
-		response["query"] = str(request.form['q'])
-		message = "Message"+str(response)
-	except Exception as e:
-		message = str(e)
+	search = str(request.args.get('q', ''))
 	return message, 201
 
