@@ -1,0 +1,52 @@
+{
+"website":
+	{
+		"example.com":{
+			"name":"Example Domains",
+			"domains":[
+				"example.com",
+				"example.net",
+				"example.org",
+				"example.edu"
+			],
+			"description": "Special use domains for documentation purposes. These domains are widely used in books, tutorials, sample network configurations and generally as examples for the use of domian names."
+		},
+		"harrysy.red":{
+			"name":"Harry Sy.red",
+			"domains":[
+				"harrysy.red"
+			]
+		}
+	},
+"webpage":
+	[
+		{
+			"website":"example.com",
+			"url":"https://example.com",
+			"title":"Example Domain",
+			"description":"",
+			"tags":[
+			],
+			"h1":[
+				"Example Domain"
+			]
+		},
+		{
+			"website":"harrysy.red",
+			"url":"https://harrysy.red/",
+			"title":"Harry Sy.red",
+			"description":"The portfolio of Harry Syred, a University Student studying Software Engineering",
+			"tags":[
+				"homepage",
+				"index",
+				"opensource",
+				"portfolio",
+				"UK",
+				"United Kingdom"
+			],
+			"h1":[
+				"Harry Sy.red"
+			]
+		}
+	]
+}
