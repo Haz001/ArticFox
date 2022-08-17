@@ -15,12 +15,16 @@ class Keywords:
 			if item in k:
 				return True
 		return False
+	def similar_to(self,item):
+		return (soundex.soundex(item) in self.s_keywords)
 
 	def append(self, other):
 		if(type(other) == str):
 			for w in other.split(" "):
 				self.keywords.append(w.lower())
-				#self.s_keywords.append(soundex.soundex(w))
+				sx = soundex.soundex(w)
+				if(sx != "0000"):
+					self.s_keywords.append(sx)
 		elif(other == None):
 			pass
 		else:
@@ -151,11 +155,15 @@ def setup(filename="db.json"):
 	# 	print(p)
 
 
-def search(needle, haystack, ):
+def search(needle, haystack):
 	results = []
-	for haybale in haystack:
-		if(needle in haybale.keywords):
-			results.append(haybale)
+	for n in needle.split(" "):
+		for haybale in haystack:
+			if(haybale not in results):
+				if(n in haybale.keywords):
+					results.append(haybale)
+				elif(haybale.keywords.similar_to(n)):
+					results.append(haybale)
 	return results
 if __name__ == "__main__":
 	setup('db.json')
