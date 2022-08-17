@@ -69,10 +69,14 @@ def parse(word):
 	if not (parsed == None):
 		return parsed
 	else:
-		return "0000"
+		return None
 
 def soundex(word):
-	return normal_soundex(parse(word))
+	parsed = parse(word)
+	if(parsed != None):
+		return normal_soundex(parsed)
+	else:
+		return None
 
 if __name__ == '__main__':
 	print(soundex)

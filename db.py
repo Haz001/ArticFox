@@ -23,7 +23,7 @@ class Keywords:
 			for w in other.split(" "):
 				self.keywords.append(w.lower())
 				sx = soundex.soundex(w)
-				if(sx != "0000"):
+				if(sx != None):
 					self.s_keywords.append(sx)
 		elif(other == None):
 			pass
@@ -158,12 +158,13 @@ def setup(filename="db.json"):
 def search(needle, haystack):
 	results = []
 	for n in needle.split(" "):
-		for haybale in haystack:
-			if(haybale not in results):
-				if(n in haybale.keywords):
-					results.append(haybale)
-				elif(haybale.keywords.similar_to(n)):
-					results.append(haybale)
+		if(len(n)> 0):
+			for haybale in haystack:
+				if(haybale not in results):
+					if(n in haybale.keywords):
+						results.append(haybale)
+					elif(haybale.keywords.similar_to(n)):
+						results.append(haybale)
 	return results
 if __name__ == "__main__":
 	setup('db.json')
